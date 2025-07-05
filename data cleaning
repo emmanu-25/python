@@ -1,0 +1,50 @@
+import pandas as pd
+
+
+df1 = pd.read_csv("C:/Users/emman/Desktop/vs code/practice.csv")
+
+print(df1)
+
+x = pd.DataFrame(df1)
+
+print(x)
+
+print( "df1 type",type(df1))
+
+
+print(df1.head)
+
+print(df1.shape)
+
+# cleaning data
+#dropping "NaN" null
+
+df1.dropna(inplace = True)
+
+print(df1["TRANSACTION"].head())
+
+#REPLACING OF STRINGS(Ksh)
+
+print(df1["TRANSACTION"].str.replace("Ksh", " ").head())
+
+#Replacing of "." in transaction 
+
+print(df1["TRANSACTION"]
+      .str.replace(".","")
+      .str.replace("Ksh","")
+      .astype(float))
+
+#dropping nofg columns and creating one
+
+df1.drop(columns = ["A/CS"],inplace = True)
+df1
+
+VALUE = df1["VALUE"]
+VALUE
+df1["VALUE_PER_TRANSACTION"]= (df1["Total Points"]/VALUE)
+print(df1["VALUE_PER_TRANSACTION"])
+
+df1.head()
+df1
+
+
